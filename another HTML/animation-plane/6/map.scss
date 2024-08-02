@@ -1,0 +1,104 @@
+$map-trees-options: (
+  // focus
+  "focus":
+    (
+      "x": 348,
+      "y": 94,
+    ),
+  // focus 2
+  "focus2":
+    (
+      "x": 820,
+      "y": 130,
+    ),
+  // toilet
+  "toilet":
+    (
+      "x": 542,
+      "y": 405,
+    ),
+  // toilet 2
+  "toilet2":
+    (
+      "x": 604,
+      "y": 51,
+    ),
+  // food
+  "food":
+    (
+      "x": 541,
+      "y": 203,
+    ),
+  // center (one tree)
+  "center":
+    (
+      "x": 820,
+      "y": 266,
+    )
+);
+
+$map-clouds-options: (
+  // left
+  "left":
+    (
+      "x": 314,
+      "y": 47,
+    ),
+  // right
+  //"right": (
+  //  "x": 930,
+  //  "y": 75,
+  //),
+);
+
+.map__decor {
+  svg {
+    display: block;
+    width: 100px;
+    height: auto;
+  }
+  img {
+    position: absolute;
+    display: block;
+    height: auto;
+    // sizing
+    &.decor {
+      width: 100%;
+    }
+    &.trees {
+      width: 74 / 1240 * 100%;
+    }
+    &.cloud {
+      width: 74 / 1240 * 100%;
+    }
+    &.fish {
+      width: 170 / 1240 * 100%;
+      top: 390 / 482 * 100%;
+      left: 1070 / 1240 * 100%;
+    }
+    // clouds positions
+    @each $key-cloud, $cloud-options in $map-clouds-options {
+      $x-cloud: map_get($cloud-options, "x");
+      $y-cloud: map_get($cloud-options, "y");
+
+      &.cloud-#{$key-cloud} {
+        left: $x-cloud / 1240 * 100%;
+        top: $y-cloud / 482 * 100%;
+      }
+    }
+    &.cloud-right {
+      left: 75%;
+      top: 15.56017%;
+    }
+    // trees positions
+    @each $key, $tree-options in $map-trees-options {
+      $x: map_get($tree-options, "x");
+      $y: map_get($tree-options, "y");
+
+      &.trees-#{$key} {
+        left: $x / 1240 * 100%;
+        top: $y / 482 * 100%;
+      }
+    }
+  }
+}

@@ -1,0 +1,114 @@
+// Ограничение анимаций
+@media screen and (prefers-reduced-motion: reduce), (update: slow) {
+  * {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
+
+// Смещение по оси X
+@keyframes translateX {
+  from {
+    transform: translateX(30px);
+  }
+
+  to {
+    transform: translateX(0);
+  }
+}
+
+// Прозрачность
+@keyframes opacity {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+// Масштаб
+@keyframes scale {
+  from {
+    transform: scale(0);
+  }
+
+  to {
+    transform: scale(1);
+  }
+}
+
+// Масштаб по оси X
+@keyframes scaleXR {
+  from {
+    transform: scaleX(0);
+    transform-origin: right;
+  }
+
+  to {
+    transform: scaleX(1);
+    transform-origin: right;
+  }
+}
+
+// Анимация для букв заголовков (инитится в animations.js)
+@keyframes title {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 100%, 0);
+  }
+
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+.js-animation-title-line {
+  display: flex;
+
+  margin-top: -50px;
+  padding-top: 50px;
+
+  overflow: hidden;
+
+  span {
+    margin-top: -50px;
+    padding-top: 50px;
+
+    body.load .screen.active & {
+      animation-name: title;
+      animation-duration: 0.3s;
+      animation-timing-function: cubic-bezier(0, 0.27, 0, 0.51);
+      animation-delay: var(--delay, 0.9s);
+      animation-fill-mode: both;
+    }
+  }
+}
+
+// Анимация для "выкатывания" кнопок на стр Истории
+@keyframes rollXR {
+  from {
+    opacity: 0;
+    transform: translateX(100%) rotate(360deg);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0) rotate(0);
+  }
+}
+
+@keyframes rollXL {
+  from {
+    opacity: 0;
+    transform: translateX(-100%) rotate(-360deg);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0) rotate(0);
+  }
+}
